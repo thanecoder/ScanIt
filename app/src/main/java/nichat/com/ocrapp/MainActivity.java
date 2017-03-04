@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     File dir1,dir2;
     File[] files;
     String listItemName;
+    ArrayList<String> FilesInFolder;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -103,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         ArrayList<String> FilesInFolder = GetFiles(path2);
         prev_docs.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, FilesInFolder));
         registerForContextMenu(prev_docs);
@@ -111,10 +111,11 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 if(files.length!=0)
                 {
-                    String filename=files[position].getName();
+                    String filename=files[(files.length-1)-position].getName();
                     Toast.makeText(getBaseContext(),filename,Toast.LENGTH_SHORT).show();
                     Intent i=new Intent(MainActivity.this,Activity4.class);
                     i.putExtra("filename",filename);
+                    i.putExtra("option",1);
                     startActivity(i);
                 }
                 else
@@ -155,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v,ContextMenu.ContextMenuInfo menuInfo) {
         if (v.getId()==R.id.prev_docs) {
             AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
-            menu.setHeaderTitle(files[info.position].getName());
+            menu.setHeaderTitle(files[(files.length-1)-info.position].getName());
             CreateMenu(menu);
         }
     }

@@ -29,7 +29,7 @@ public class Activity4 extends AppCompatActivity implements ActivityCompat.OnReq
     String path1= Environment.getExternalStorageDirectory().getPath()+"/ScanIt/PDF/Processed";
     String path2= Environment.getExternalStorageDirectory().getPath()+"/ScanIt/PDF/Original";
     String filename = "empty";
-    int option=2;
+    int option=1;
     private RequestPermissionsTool requestTool; //for API >=23 only
     PDFView pdfView;
     @Override
@@ -42,16 +42,16 @@ public class Activity4 extends AppCompatActivity implements ActivityCompat.OnReq
         filename = i.getStringExtra("filename");
         if(option==1)
         {
-            File dir2=new File(path1);
+            File dir2=new File(path2);
             dir2.mkdirs();
-            File pdf=new File(path1,filename);
+            File pdf=new File(path2,filename);
             pdfView.fromFile(pdf).enableDoubletap(true).load();
         }
         else
         {
-            File dir2=new File(path2);
-            dir2.mkdirs();
-            File pdf=new File(path2,filename);
+            File dir1=new File(path1);
+            dir1.mkdirs();
+            File pdf=new File(path1,filename);
             pdfView.fromFile(pdf).enableDoubletap(true).load();
         }
 

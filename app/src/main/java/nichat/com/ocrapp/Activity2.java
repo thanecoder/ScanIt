@@ -90,16 +90,6 @@ public class Activity2 extends Activity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
-        //int numberOfCameras = Camera.getNumberOfCameras();
-        //for every camera check
-        /*for (int i = 0; i < numberOfCameras; i++) {
-            Camera.CameraInfo info = new Camera.CameraInfo();
-            Camera.getCameraInfo(i, info);
-            if (info.facing == Camera.CameraInfo.CAMERA_FACING_BACK) {
-                Toast.makeText(this,"Back Camera exists", Toast.LENGTH_SHORT).show();
-                break;
-            }
-        }*/
 
         initialize();
 
